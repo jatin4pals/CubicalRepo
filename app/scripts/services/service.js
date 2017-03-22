@@ -11,7 +11,6 @@ angular.module('cubicalApp')
   .factory('ArtistFactory', function () {
       var tracksLoaded = false;
       var tracks = [];
-      var artistname = "";
       return {
           loadTracks: function () {
               tracksLoaded = true;
@@ -24,12 +23,6 @@ angular.module('cubicalApp')
           },
           getTracks: function () {
               return tracks;
-          },
-          getArtistName: function () {
-              return artistname;
-          },
-          setArtistName: function (name) {
-              artistname = name;
           }
-      }
+      };
   });

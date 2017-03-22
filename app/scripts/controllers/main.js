@@ -20,14 +20,13 @@ angular.module('cubicalApp')
       $scope.$watch('areTracksLoaded()', function (newVal, oldVal) {
           if (newVal && newVal !== oldVal) {
               $scope.trackData = ArtistFactory.getTracks();
-              $scope.artistname = ArtistFactory.getArtistName();
           }
       });
 
       $scope.showAdvanced = function (ev) {
           $mdDialog.show({
               controller: DialogController,
-              templateUrl: '../../views/dialog1.tmpl.html',
+              templateUrl: 'views/dialog1.tmpl.html',
               parent: angular.element(document.body),
               targetEvent: ev,
               clickOutsideToClose: true,
@@ -62,12 +61,11 @@ angular.module('cubicalApp')
                   $http.jsonp('http://itunes.apple.com/search?term=jack&limit=4', { jsonpCallbackParam: 'callback' })
                   .then(function (result) {
                       $scope.hide();
-                      ArtistFactory.setArtistName($scope.artist.name)
                       ArtistFactory.setTracks(result.data.results);
                       ArtistFactory.loadTracks();
                   });
               }
-          }
+          };
       }
 
   });
