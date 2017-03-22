@@ -57,8 +57,8 @@ angular.module('cubicalApp')
 
           $scope.GetTracks = function () {
               if ($scope.artist && $scope.artist.name && $scope.artist.name.toLowerCase() === 'jack' && $scope.artist.trackCount === 4) {
-
-                  $http.jsonp('http://itunes.apple.com/search?term=jack&limit=4', { jsonpCallbackParam: 'callback' })
+                  var url = 'http://itunes.apple.com/search?term=' + $scope.artist.name + '&limit=' + $scope.artist.trackCount;
+                  $http.jsonp(url, { jsonpCallbackParam: 'callback' })
                   .then(function (result) {
                       $scope.hide();
                       ArtistFactory.setTracks(result.data.results);
