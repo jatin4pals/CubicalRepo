@@ -1,0 +1,36 @@
+﻿<md-dialog aria-label="Artist Details">
+    <form name="artistForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Artist Details</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <div class="glyphicon glyphicon-remove" aria-label="Close Dialog" ng-click="cancel()"></div>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block">
+                    <label>Artist Name</label>
+                    <input ng-pattern="/^jack$/i" required name="artistName" ng-model="artist.name" md-autofocus>
+                    <div ng-messages="artistForm.artistName.$error">
+                        <div ng-message="pattern">Name should be Jack!</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>No of Tracks</label>
+                    <input type="number" ng-pattern="/^4$/" required min="1" max="100" step="any" name="artistTrackCount" ng-model="artist.trackCount">
+                    <div ng-messages="artistForm.artistTrackCount.$error">
+                        <div ng-message="pattern">Number of tracks should be 4!</div>
+                    </div>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row" layout-align="center center">          
+            <md-button type="submit" ng-click="GetTracks()">Submit</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
